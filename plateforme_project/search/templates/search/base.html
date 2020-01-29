@@ -18,10 +18,10 @@
   <body id="page-top">
 
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand text-light" href="#page-top">
-        <img src="{% static 'search/img/marque_logo/full_size_logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="Logo Pur Beurre">
-        Pur Beurre
+        <img src="{% static 'search/img/marque_logo/full_size_logo.png' %}" width="40" height="40" class="d-inline-block align-top" alt="Logo Pur Beurre">
+          <h2 class="d-inline-block">Pur Beurre</h2>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,25 +29,26 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="#search">
-          <button class="btn btn-sm btn-outline-light my-2 my-sm-0" type="submit">Chercher</button>
-            </a>
+            <form class="form-inline my-lg-2">
+              <input class="form-control-sm mr-sm-2" id="search" type="search" placeholder="Produit">
+              <button class="btn btn-sm btn-outline-light my-2 my-sm-0" type="submit">Chercher</button>
+            </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-user fa-lg" style="color:white;"></i>
+            <a class="nav-link" href="{% url 'search:log_in' %}">
+              <i class="fas fa-user fa-2x" style="color:white;"></i>
             </a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#">
-              <i class="fas fa-carrot fa-lg" style="color:white;"></i>
+              <i class="fas fa-carrot fa-2x" style="color:white;"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-sign-out-alt fa-lg" style="color:white;"></i>
+            <a class="nav-link" href="{% url 'search:log_out' %}">
+              <i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>
             </a>
           </li>
         </ul>

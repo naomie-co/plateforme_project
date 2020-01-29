@@ -19,10 +19,11 @@ from django.contrib import admin
 from search import views
 
 urlpatterns = [
-    #url(r'^$', views.index, name='index/'),
-    url(r'^search/', include('search.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.index, name='index'),
+    url(r'^search/', include('search.urls', namespace='search')),
+    url(r'^manage/', admin.site.urls),
 ]
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
