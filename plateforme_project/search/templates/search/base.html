@@ -46,11 +46,13 @@
               <i class="fas fa-carrot fa-2x" style="color:white;"></i>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'search:log_out' %}">
-              <i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>
-            </a>
-          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'search:log_out' %}">
+                <i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>
+              </a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </nav>

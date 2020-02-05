@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template import loader
 
@@ -49,3 +50,21 @@ def log_in(request):
 def log_out(request):
 	logout(request)
 	return render(request, 'search/index.html')
+
+def sign_up(request):
+    error = False
+    if request.method == "POST":
+        form = ConnexionForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            print(username)
+            user = User.objects.create_user(username=username, email=None, password=password)  # Nous vérifions si les données sont correctes
+            userid = authenticate(request, username=username, password=password)
+            if userid:  # Si l'objet renvoyé n'est pas None
+                login(request, userid)  # nous connectons l'utilisateur
+            else: # sinon une erreur sera affichée
+                error = True
+    else:
+        form = ConnexionForm()
+    return render(request, 'search/sign_up.html', locals())

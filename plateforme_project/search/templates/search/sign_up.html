@@ -5,25 +5,22 @@
 <div style="background-color: #345A61">
     <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-            <h1 class="text-uppercase text-white font-weight-bold">Se connecter</h1>
+            <h1 class="text-uppercase text-white font-weight-bold">Créer un compte</h1>
             {% if error %}
                 <p>Utilisateur inconnu ou mauvais de mot de passe.</p>
             {% endif %}
 
-            {% if user.is_authenticated %}
-                Vous êtes connecté, {{ user.username }} !
+            {% if userid.is_authenticated %}
+                Vous êtes connecté, {{ userid.username }} !
             {% else %}
                 <div class="col-lg-10 text-white text-center">
                     <form method="post" action=".">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="submit" value="Se connecter" />
+                        <input type="submit" value="S'inscrire" />
                     </form>
                 </div>
             {% endif %}
-            <div>
-                <a href="{% url 'search:sign_up' %}">Pas encore inscrit(e)?</a>
-            </div>
         </div>
       </div>
     </div>
