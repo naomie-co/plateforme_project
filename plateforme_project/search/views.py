@@ -6,13 +6,15 @@ from django.template import loader
 
 #test for login
 from django import forms
-from .models import PRODUCTS
+#from .models import PRODUCTS
 
 def index(request):
    # template = loader.get_template('search/index.html')
     #return HttpResponse(template.render(request=request))
     return render(request, 'search/index.html')
 
+
+""""
 def listing(request):
     products = PRODUCTS
     context = {
@@ -21,7 +23,7 @@ def listing(request):
     template = loader.get_template('search/listing.html')
     return HttpResponse(template.render(context, request=request))
 
-
+"""
 
 #log-in test
 class ConnexionForm(forms.Form):

@@ -20,7 +20,7 @@ class loginPageTestCase(TestCase):
 
     #test that login page returns a status code 200
     def test_log_in_page(self):
-        response = self.client.get(reverse('log_in'))
+        response = self.client.get(reverse('search:log_in'))
         self.assertEqual(response.status_code, 200)
 
 #Logout page
@@ -30,7 +30,7 @@ class loginPageTestCase(TestCase):
 class signup_PageTestCase(TestCase):
     #test that logout page returns a status code 200
     def test_sign_up_page(self):
-        response = self.client.get(reverse('sign_up'))
+        response = self.client.get(reverse('search:sign_up'))
         self.assertEqual(response.status_code, 200)
     
     #test that a new user is made
