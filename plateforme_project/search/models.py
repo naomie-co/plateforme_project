@@ -16,16 +16,17 @@ PRODUCTS = [
 ]
 """
 
-class categories(models.Model):
+class categorie(models.Model):
     categorie = models.CharField(max_length=100)
 
 class op_food(models.Model):
     nom = models.CharField(max_length=100)
     nutriscore = models.CharField(max_length=1)
-    ingredients = models.CharField(max_length=255)
-    store = models.CharField(max_length=100)
+    ingredient = models.CharField(max_length=255)
+    nutritional_values = models.CharField(max_length=100)
     url = models.URLField()
-    id_categorie = models.OneToOneField(categories, on_delete=models.CASCADE)
+    picture = models.URLField(null=True)
+    id_categorie = models.OneToOneField(categorie, on_delete=models.CASCADE)
 
 
 class substitute(models.Model):
