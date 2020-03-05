@@ -61,14 +61,13 @@ class Command(BaseCommand):
         """"""
         categories = categorie()
         categories = categorie.objects.all()
-        categorie_name = [categ.name for categ in categories]
         #print("Premier print :", categorie_name)
-        for cat in categorie_name:
-            for value in self.request_product(cat):
-                new_values = op_food(id_categorie=categories.get(pk=cat), \
+        for cat in categories:
+            for value in self.request_product(cat.name):
+                new_values = op_food(categorie=cat, \
                 name=value[0], nutriscore=value[1], ingredient=value[2], \
                 picture_100g=value[3], picture=value[4], url=value[5])
-                print("Troisième print : ", new_values)
+                #print("Troisième print : ", new_values)
                 new_values.save()
 
 
