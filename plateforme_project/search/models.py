@@ -17,19 +17,29 @@ PRODUCTS = [
 """
 
 class categorie(models.Model):
-    categorie = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.id
 
 class op_food(models.Model):
-    nom = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     nutriscore = models.CharField(max_length=1)
     ingredient = models.CharField(max_length=255)
     nutritional_values = models.CharField(max_length=100)
     url = models.URLField()
     picture = models.URLField(null=True)
+    picture_100g = models.URLField(null=True)
     id_categorie = models.OneToOneField(categorie, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class substitute(models.Model):
     #id_original = models.ForeignKey(op_food, on_delete=models.CASCADE)
     id_substitute = models.ForeignKey(op_food, on_delete=models.CASCADE)
     user = models.ManyToManyField(User, related_name="substitute", blank=True)
+
+    def __str__(self):
+        return self.user
