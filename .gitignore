@@ -1,9 +1,7 @@
 envP8/
 plateforme_project/plateforme_project/info.py
-plateforme_project/plateforme_project/__pycache__/
-plateforme_project/search/__pycache__/__init__.cpython-36.pyc
-plateforme_project/search/__pycache__/admin.cpython-36.pyc
-plateforme_project/search/__pycache__/models.cpython-36.pyc
+*.pyc
+__pycache__/
 plateforme_project/search/__pycache__/urls.cpython-36.pyc
 plateforme_project/search/__pycache__/views.cpython-36.pyc
 plateforme_project/search/migrations/__pycache__/__init__.cpython-36.pyc

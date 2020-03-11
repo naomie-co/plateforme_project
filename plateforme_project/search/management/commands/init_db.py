@@ -1,7 +1,7 @@
 import requests
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
-from search.models import categorie, op_food
+from search.models import categorie, op_food, substitute
 from search.const import CATEGORIES
 
 
@@ -29,7 +29,6 @@ class Command(BaseCommand):
             cat = categorie()
             cat.name = elt
             #cat.clean()
-            #print("Zero print : ", elt)
             cat.save()
         return cat
 
@@ -53,26 +52,34 @@ class Command(BaseCommand):
                     break
             except KeyError:
                 pass
-        #print("deuxième print : ", data)
         return data
    
     
     def search_product(self):
-        """"""
+        """From the categories of the category table, launch a request to the
+        OFF API with the request_product method. Retrieve the OFF data to 
+        insert into the op_food table"""
         categories = categorie()
         categories = categorie.objects.all()
-        #print("Premier print :", categorie_name)
         for cat in categories:
             for value in self.request_product(cat.name):
                 new_values = op_food(categorie=cat, \
                 name=value[0], nutriscore=value[1], ingredient=value[2], \
                 picture_100g=value[3], picture=value[4], url=value[5])
-                #print("Troisième print : ", new_values)
                 new_values.save()
+
+    def delete_data(self):
+        """Delete data from categorie, op_food and substitute tables"""
+        categorie.objects.all().delete()
+        op_food.objects.all().delete()
+        substitute.objects.all().delete()
+
 
 
     def handle(self, *args, **options):
-
+        """Delete data then fill the database
+        """
+        self.delete_data()
         self.categorie_db()
         self.search_product()
 
