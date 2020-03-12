@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template import loader
+from search.models import categorie, op_food, substitute
 
 #test for login
 from django import forms
@@ -70,3 +71,25 @@ def sign_up(request):
     else:
         form = ConnexionForm()
     return render(request, 'search/sign_up.html', locals())
+
+
+def products(request):
+    query = request.GET.get('query')
+    if not query:
+        products = op_food.objects.all()
+
+    else:
+        products = op_food.objects.filter(name__icontains=query)
+        if len(products) == 0:
+            message = "Aucun produit ne correspond aux critères de votre recherche"
+        else:
+            print([type(product) for product in products])
+            products = [product.name for product in products]
+    title = "Résultats pour la requête %s"%query
+    context = {
+        'products': products,
+        'title': title
+    }
+
+    return render(request, 'search/products.html', context)
+

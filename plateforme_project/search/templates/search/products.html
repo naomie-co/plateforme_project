@@ -1,0 +1,10 @@
+{% extends 'search/base.html' %}
+
+{% block content %}
+
+{% for product in products %}
+    <div class="col-sm-4 text-center">
+       <li>{{ product }}</li>
+    </div>
+{% endfor %}
+{% endblock %}
