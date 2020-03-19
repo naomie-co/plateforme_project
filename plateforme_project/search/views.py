@@ -83,13 +83,25 @@ def products(request):
         if len(products) == 0:
             message = "Aucun produit ne correspond aux critères de votre recherche"
         else:
-            print([type(product) for product in products])
-            products = [product.name for product in products]
-    title = "Résultats pour la requête %s"%query
+            products = [product for product in products]
+    title = "Résultats pour la recherche : %s"%query
     context = {
         'products': products,
         'title': title
     }
 
     return render(request, 'search/products.html', context)
+
+
+def detail(request, product_id):
+
+    product = op_food.objects.get(id=product_id)
+    context = {
+        'product': product,
+    }
+    print(product)
+
+
+    return render(request, 'search/detail.html', context)
+
 

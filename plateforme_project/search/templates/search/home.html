@@ -13,11 +13,9 @@
       <div class="col-lg-10 align-self-baseline">
         <h2 class="text-white-75 text-light mb-5">Trouvez un produit de substitution pour ceux que vous consommez tous les jours.</h2>
       </div>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control-lg mr-sm-2" id="search" type="search" placeholder="Produit">
-        <a href="{% url 'search:products' %}">
+      <form class="form-inline my-2 my-lg-0" action="{% url 'search:products' %}" method="GET">
+        <input class="form-control-lg mr-sm-2" id="search" type="search" placeholder="Produit" name="query">
           <button class="btn btn-lg btn-outline-light my-2 my-sm-0" type="submit">Chercher</button>
-        </a>
       </form>
     </div>
   </div>

@@ -2,9 +2,29 @@
 
 {% block content %}
 
-{% for product in products %}
-    <div class="col-sm-4 text-center">
-       <li>{{ product }}</li>
+
+  <div class="container-fluid" class="base">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-lg-10 my-4">
+        <h1 class="text-white">{{title}}</h1>
+        <hr class="divider my-4">
+      </div>
     </div>
-{% endfor %}
+
+
+  <div class="row">
+		{% for product in products %}
+		    <div class="col-sm-4 text-center">
+		       <a href="{% url 'search:detail' product_id=product.id %}">
+		          <img class="img-responsive" width="200" height="200" src="{{ product.picture }}" alt="{{ product.name }}">
+		        </a>
+		        <h3><a href="{% url 'search:detail' product_id=product.id %}">{{ product.name }}</a></h3>
+		        <p>
+		        	<a href="{% url 'search:log_in' %}"><i class="far fa-square" style="color:white;"></i> Sauvegarder</a>
+		        </p>
+		    </div>
+		  {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
+		{% endfor %}
+  </div>
+
 {% endblock %}
