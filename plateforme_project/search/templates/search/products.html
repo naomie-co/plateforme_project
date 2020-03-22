@@ -14,14 +14,19 @@
 
   <div class="row">
 		{% for product in products %}
-		    <div class="col-sm-4 text-center">
+		    <div class="col-lg-4 text-center">
 		       <a href="{% url 'search:detail' product_id=product.id %}">
 		          <img class="img-responsive" width="200" height="200" src="{{ product.picture }}" alt="{{ product.name }}">
 		        </a>
 		        <h3><a href="{% url 'search:detail' product_id=product.id %}">{{ product.name }}</a></h3>
-		        <p>
-		        	<a href="{% url 'search:log_in' %}"><i class="far fa-square" style="color:white;"></i> Sauvegarder</a>
-		        </p>
+		        <h3>{{product.nutriscore}}</h3>
+			    {% if user.is_authenticated %}
+			        <p>
+			        	<a href="{% url 'search:log_in' %}"><i class="far fa-square" style="color:white;"></i> Sauvegarder</a>
+			        </p>
+			    {% else %}
+			    	<p><a href="{% url 'search:log_in' %}">Connectez-vous pour enregistrer ce produit</a></p>
+          		{% endif %}
 		    </div>
 		  {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
 		{% endfor %}

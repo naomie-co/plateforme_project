@@ -7,7 +7,7 @@
         <div class="col-lg-10 align-self-end">
             <h1 class="text-uppercase text-white font-weight-bold">Créer un compte</h1>
             {% if error %}
-                <p>Utilisateur inconnu ou mauvais de mot de passe.</p>
+                <p class="error">Ce compte existe déjà</p>
             {% endif %}
 
             {% if userid.is_authenticated %}
