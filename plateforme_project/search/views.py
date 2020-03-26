@@ -55,7 +55,7 @@ def sign_up(request):
                 userid = authenticate(request, username=username, password=password)
                 login(request, userid)
             except IntegrityError: 
-                error = True #variable to print an error message il the username already exists
+                error = True #variable to print an error message if the username already exists
                 form = ConnexionForm()
     else:
         form = ConnexionForm()
@@ -65,15 +65,15 @@ def sign_up(request):
 def products(request):
     query = request.GET.get('query')
     if not query:
-        products = op_food.objects.all()
+        products = op_food.objects.all()[:24]
 
     else:
-        products = op_food.objects.filter(name__icontains=query)
+        products = op_food.objects.filter(name__icontains=query)[:6]
         if len(products) == 0:
             message = "Aucun produit ne correspond aux critères de votre recherche"
         else:
             products = [product for product in products]
-    title = "Résultats pour la recherche : %s"%query
+    title = "Résultats de la recherche : %s"%query
     context = {
         'products': products,
         'title': title
@@ -88,5 +88,21 @@ def detail(request, product_id):
         'product': product,
     }
     return render(request, 'search/detail.html', context)
+
+
+def my_selection (self, user):
+
+    subs = substitute.get(user=user)
+
+    subs = [subs.id_substitute for elt in subs]
+
+    products = op_food.objects.get(id=subs)
+
+    context = {
+        'products': products,
+    }
+
+    return render(request, 'search/my_selection.html', context)
+
 
 

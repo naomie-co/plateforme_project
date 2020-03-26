@@ -37,7 +37,6 @@ class op_food(models.Model):
 
 
 class substitute(models.Model):
-    #id_original = models.ForeignKey(op_food, on_delete=models.CASCADE)
     id_substitute = models.ForeignKey(op_food, on_delete=models.CASCADE)
     user = models.ManyToManyField(User, related_name="substitute", blank=True)
 

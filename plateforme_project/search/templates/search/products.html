@@ -16,7 +16,7 @@
 		{% for product in products %}
 		    <div class="col-lg-4 text-center">
 		       <a href="{% url 'search:detail' product_id=product.id %}">
-		          <img class="img-responsive" width="200" height="200" src="{{ product.picture }}" alt="{{ product.name }}">
+		          <img class="img-responsive" width="300" height="300" src="{{ product.picture }}" alt="{{ product.name }}">
 		        </a>
 		        <h3><a href="{% url 'search:detail' product_id=product.id %}">{{ product.name }}</a></h3>
 		        <h3>{{product.nutriscore}}</h3>
