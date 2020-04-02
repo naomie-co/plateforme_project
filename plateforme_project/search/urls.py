@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^sign_up/$', views.sign_up, name='sign_up'),
     url(r'^products/$', views.products, name='products'),
     url(r'^(?P<product_id>[0-9]+)/$', views.detail, name='detail'),
-    url(r'^my_selection/$', views.my_selection, name='my_selection'),
+    url(r'^my_selection/(?P<user>\w+)/$', views.my_selection, name='my_selection'),
 
 ]
 

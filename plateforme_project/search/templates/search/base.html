@@ -41,11 +41,19 @@
               <i class="fas fa-user fa-2x" style="color:white;"></i>
             </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'search:my_selection' %}">
-              <i class="fas fa-carrot fa-2x" style="color:white;"></i>
-            </a>
-          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'search:my_selection' user=user.id %}">
+                <i class="fas fa-carrot fa-2x" style="color:white;"></i>
+              </a>
+            </li>
+          {% else %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'search:log_in' %}">
+                <i class="fas fa-carrot fa-2x" style="color:white;"></i>
+              </a>
+            </li>
+          {% endif %}
           {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'search:log_out' %}">

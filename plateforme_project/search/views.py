@@ -63,21 +63,40 @@ def sign_up(request):
 
 
 def products(request):
-    query = request.GET.get('query')
-    if not query:
-        products = op_food.objects.all()[:24]
+    if request.method == "GET":
+        query = request.GET.get('query')
+        if not query:
+            products = op_food.objects.all()[:24]
 
-    else:
-        products = op_food.objects.filter(name__icontains=query)[:6]
-        if len(products) == 0:
-            message = "Aucun produit ne correspond aux critères de votre recherche"
         else:
-            products = [product for product in products]
-    title = "Résultats de la recherche : %s"%query
-    context = {
-        'products': products,
-        'title': title
-    }
+            products = op_food.objects.filter(name__icontains=query)[:6]
+            if len(products) == 0:
+                message = "Aucun produit ne correspond aux critères de votre recherche"
+            else:
+                products = [product for product in products]
+                print(products)
+        title = "Résultats de la recherche : %s"%query
+        context = {
+            'products': products,
+            'title': title
+        }
+    if request.method == "POST":
+        try:
+            product = request.POST.get('product')
+            user = request.POST.get('user')
+            #prod = op_food.objects.get(id=product)
+            #user_name = User.objects.get(username=user)
+            #print(user, prod.id)
+            #print(type(prod))
+            print(product, user)
+            selection = substitute.objects.create(id_substitute=product, user=user)
+            message = "Le produit est sauvegardé!"
+        except IntegrityError:
+            error = True
+        context = {
+        'message': message
+        }  
+
     return render(request, 'search/products.html', context)
 
 
@@ -90,13 +109,17 @@ def detail(request, product_id):
     return render(request, 'search/detail.html', context)
 
 
-def my_selection (self, user):
+def my_selection (request, user):
 
-    subs = substitute.get(user=user)
+    userid = User.objects.get(id=user)
+
+    subs = substitute.objects.filter(user=userid)
 
     subs = [subs.id_substitute for elt in subs]
 
-    products = op_food.objects.get(id=subs)
+    products = [op_food.objects.filter(id=sub) for sub in subs]
+
+    products = [product for product in products]
 
     context = {
         'products': products,
