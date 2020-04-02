@@ -38,7 +38,7 @@ class op_food(models.Model):
 
 class substitute(models.Model):
     id_substitute = models.ForeignKey(op_food, on_delete=models.CASCADE)
-    user = models.ManyToManyField(User, related_name="substitute", blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user
+        return self.user.id, self.id_substitute.id

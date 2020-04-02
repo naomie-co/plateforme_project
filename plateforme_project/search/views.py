@@ -80,16 +80,17 @@ def products(request):
             'products': products,
             'title': title
         }
+
     if request.method == "POST":
         try:
             product = request.POST.get('product')
             user = request.POST.get('user')
-            #prod = op_food.objects.get(id=product)
-            #user_name = User.objects.get(username=user)
+            prod = op_food.objects.get(id=product)
+            user_id = User.objects.get(id=user)
             #print(user, prod.id)
             #print(type(prod))
             print(product, user)
-            selection = substitute.objects.create(id_substitute=product, user=user)
+            selection = substitute.objects.create(id_substitute=prod, user=user_id)
             message = "Le produit est sauvegardé!"
         except IntegrityError:
             error = True
@@ -115,11 +116,9 @@ def my_selection (request, user):
 
     subs = substitute.objects.filter(user=userid)
 
-    subs = [subs.id_substitute for elt in subs]
+    subs = [elt.id_substitute.id for elt in subs]
 
     products = [op_food.objects.filter(id=sub) for sub in subs]
-
-    products = [product for product in products]
 
     context = {
         'products': products,
