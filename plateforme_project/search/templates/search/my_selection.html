@@ -1,5 +1,7 @@
 {% extends 'search/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 	<div class="container-fluid" class="base">
@@ -19,7 +21,7 @@
 			 			<img class="img-responsive" width="200" height="300" src="{{ product.picture }}" alt="{{ product.name }}">
 			        </a>
 			       	<h3><a href="{% url 'search:detail' product_id=product.id %}">{{ product.name }}</a></h3>
-			        <h3>{{product.nutriscore}}</h3>
+			        <img class="img-responsive"width="70" height="80" src="{% static 'search/img/thumbnails/' %}{{ product.nutriscore}}.png"  alt="{{ product.nutriscore }}">
 			    </div>
 			  {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
 			{% endfor %}

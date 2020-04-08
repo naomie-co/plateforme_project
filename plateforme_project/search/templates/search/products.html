@@ -1,5 +1,7 @@
 {% extends 'search/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 
@@ -14,12 +16,13 @@
 
   <div class="row">
 		{% for product in products %}
-		    <div class="col-lg-4 text-center">
-		       <a href="{% url 'search:detail' product_id=product.id %}">
+		    <div class="col-lg-4 text-center my-4">
+		        <a href="{% url 'search:detail' product_id=product.id %}">
 		          <img class="img-responsive" width="300" height="300" src="{{ product.picture }}" alt="{{ product.name }}">
+		          <img class="img-responsive thumbnails" width="70" height="80" src="{% static 'search/img/thumbnails/' %}{{ product.nutriscore}}.png"  alt="{{ product.nutriscore }}">
 		        </a>
 		        <h3><a href="{% url 'search:detail' product_id=product.id %}">{{ product.name }}</a></h3>
-		        <h3>{{product.nutriscore}}</h3>
+		        
 			    {% if user.is_authenticated %}
 		        	<form method="post" action="{% url 'search:products' %}">
 		        		{% csrf_token %}

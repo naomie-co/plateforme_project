@@ -33,3 +33,11 @@ footer {
 .error {
   color: white;
 }
+
+.thumbnails {
+
+  position: absolute;
+  top: 8px;
+  right: 75px;
+
+}

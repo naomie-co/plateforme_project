@@ -1,5 +1,7 @@
 {% extends 'search/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 	<div class="container-fluid" class="base">
@@ -11,15 +13,17 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-6 text-center">
-			<h1>{{ product.nutriscore}}</h1>
-		</div>
+			<h2 class="text-white">Nutriscore : </h2>
+			<img class="img-responsive"width="400" height="200" src="{% static 'search/img/nutriscore/' %}{{ product.nutriscore}}.svg"  alt="{{ product.nutriscore }}">
+		</div> 
 		<div class="col-sm-6 text-center">
-			 <img class="img-responsive" width="200" height="200" src="{{ product.picture_100g }}" alt="{{ product.name }}">
+			<h2 class="text-white">Valeurs nutritionnelles pour 100g : </h2>
+			 <img class="img-responsive" width="300" height="200" src="{{ product.picture_100g }}" alt="{{ product.name }}">
 		</div>
 	</div>	
 
 	<div class="row">
-		<div class="col-sm-12 text-center">
+		<div class="col-sm-12 text-center my-4">
 			<a class="btn btn-lg btn-outline-light" href="{{ product.url }}">Voir la fiche d'OpenFoodFacts</a>
 		</div>
 	</div>

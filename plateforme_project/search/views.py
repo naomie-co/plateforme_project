@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
@@ -18,6 +18,9 @@ def index(request):
 class ConnexionForm(forms.Form):
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
+
+class SignupForm(ConnexionForm):
+    email = forms.EmailField(label="Email", widget=forms.EmailInput)
 
 def log_in(request):
 
@@ -46,30 +49,32 @@ def log_out(request):
 
 def sign_up(request):
     if request.method == "POST":
-        form = ConnexionForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
+            email = form.cleaned_data["email"]
             try:
-                user = User.objects.create_user(username=username, email=None, password=password)
+                user = User.objects.create_user(username=username, email=email, password=password)
                 userid = authenticate(request, username=username, password=password)
                 login(request, userid)
             except IntegrityError: 
                 error = True #variable to print an error message if the username already exists
-                form = ConnexionForm()
+                form = SignupForm()
     else:
-        form = ConnexionForm()
+        form = SignupForm()
     return render(request, 'search/sign_up.html', locals())
 
 
 def products(request):
     if request.method == "GET":
         query = request.GET.get('query')
+        query = query.capitalize()
         if not query:
             products = op_food.objects.all()[:24]
 
         else:
-            products = op_food.objects.filter(name__icontains=query)[:6]
+            products = op_food.objects.filter(name__contains=query).order_by('nutriscore')[:6]
             if len(products) == 0:
                 message = "Aucun produit ne correspond aux critères de votre recherche"
             else:
@@ -80,6 +85,7 @@ def products(request):
             'products': products,
             'title': title
         }
+        return render(request, 'search/products.html', context)
 
     if request.method == "POST":
         try:
@@ -94,11 +100,7 @@ def products(request):
             message = "Le produit est sauvegardé!"
         except IntegrityError:
             error = True
-        context = {
-        'message': message
-        }  
-
-    return render(request, 'search/products.html', context)
+        return redirect('search:my_selection', user=user)
 
 
 def detail(request, product_id):
@@ -118,7 +120,7 @@ def my_selection (request, user):
 
     subs = [elt.id_substitute.id for elt in subs]
 
-    products = [op_food.objects.filter(id=sub) for sub in subs]
+    products = [op_food.objects.filter(id=sub)[0] for sub in subs]
 
     context = {
         'products': products,
