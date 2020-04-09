@@ -14,7 +14,7 @@ def index(request):
     return render(request, 'search/index.html')
 
 
-#log-in test
+#log forms
 class ConnexionForm(forms.Form):
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
