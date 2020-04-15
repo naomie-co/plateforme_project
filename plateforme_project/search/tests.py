@@ -3,6 +3,7 @@ from django.test import TestCase
 from .views import index, log_out, log_in, sign_up
 from search.models import categorie, op_food, substitute
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
     
 class IndexPageTestCase(TestCase):
@@ -55,12 +56,24 @@ class PagesTestCase(TestCase):
         """test that detail page returns a status code 404 if the items does not exist"""
         product_id = self.product1.id + 2
         reponse = self.client.get(reverse('search:detail', args=(product_id,)))
-        self.assertEqual(reponse.status_code, 500)
+        self.assertEqual(reponse.status_code, 404)
+
+    def test_my_selection_authentificated(self):
+        """Test that my_selection page returns a status code 303 to log_in page
+        if the user is not authentificated"""
+        user_test = {"user":234}
+        reponse = self.client.get(reverse('search:my_selection', args=(user_test)))
+        self.assertEqual(reponse.status_code, 302)
 
 
-    def test_product_page(self):
-        """Test that a new product is registered"""
-        pass
+
+    def test_products_page(self):
+        """Test that if the user logs in, the product page is different from the unconnected version"""
+
+        page_without_log = self.client.get(reverse('search:products')) 
+        user_1 = self.client.login(username="test_1", password="password")
+        reponse = self.client.get(reverse('search:products'))
+        self.asserEqual(reponse, page_without_log) 
 
     def test_selection_registered(self):
 
@@ -72,3 +85,5 @@ class PagesTestCase(TestCase):
 
         """Test that a product can be registered one time by a user"""
         pass
+
+        
