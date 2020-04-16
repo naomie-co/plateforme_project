@@ -73,19 +73,36 @@ class PagesTestCase(TestCase):
         page_without_log = self.client.get(reverse('search:products'))
         user_1 = self.client.login(username="test_1", password="password")
         reponse = self.client.get(reverse('search:products'))
-        print(page_without_log)
-        print(reponse)
+        #print(page_without_log)
+        #print(reponse)
         self.assertNotEqual(reponse, page_without_log) 
 
-    def test_selection_registered(self):
 
-        """Test that a product belongs to a user"""
+class DataBaseTestCase(TestCase):
 
-        pass
-    
-    def test_selection_registered_once(self):
+    def setUp(self):
+        test_categorie = categorie.objects.create(name="taboulé")
+        self.cat = categorie.objects.get(name="taboulé")
+        test_product1 = op_food.objects.create(name="taboulé", nutriscore="d", ingredient="test",  nutritional_values="test", url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
+        test_product2 = op_food.objects.create(name="taboulé2", nutriscore="c", ingredient="test2",  nutritional_values="test2", url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
+        self.product1 = op_food.objects.get(name="taboulé")
+        self.product2 = op_food.objects.get(name="taboulé2")
 
-        """Test that a product can be registered one time by a user"""
-        pass
+    def test_user_create(self):
+        """Test that a new user is created"""
+        User.objects.create_user('user_test', 'user_test@test.com', 'testpassword')
+        assert User.objects.count() == 1
 
-        
+    def test_op_food_table(self):
+        """Test that a new obejct is created"""
+        old_products = op_food.objects.count()
+        op_food.objects.create(name="taboulé", nutriscore="d", ingredient="test",  nutritional_values="test", url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
+        new_products = op_food.objects.count()
+        self.assertEqual(new_products, old_products + 1)
+
+    def test_categorie_table(self):
+        """Test that a new categorie is created"""
+        old_categorie = categorie.objects.count()
+        categorie.objects.create(name="houmous")
+        new_categorie = categorie.objects.count()
+        self.assertEqual(new_categorie, old_categorie + 1)
