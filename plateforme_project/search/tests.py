@@ -70,10 +70,12 @@ class PagesTestCase(TestCase):
     def test_products_page(self):
         """Test that if the user logs in, the product page is different from the unconnected version"""
 
-        page_without_log = self.client.get(reverse('search:products')) 
+        page_without_log = self.client.get(reverse('search:products'))
         user_1 = self.client.login(username="test_1", password="password")
         reponse = self.client.get(reverse('search:products'))
-        self.asserEqual(reponse, page_without_log) 
+        print(page_without_log)
+        print(reponse)
+        self.assertNotEqual(reponse, page_without_log) 
 
     def test_selection_registered(self):
 
