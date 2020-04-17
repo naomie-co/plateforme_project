@@ -2,27 +2,29 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.http import HttpResponse
-from django.template import loader
-from search.models import categorie, op_food, substitute
-
-#test for login
 from django import forms
-#from .models import PRODUCTS
+from search.models import op_food, substitute
+
+"""Views of the pur beurre website"""
+
 
 def index(request):
+    """Function that display the home page"""
     return render(request, 'search/index.html')
 
 
-#log forms
+
 class ConnexionForm(forms.Form):
+    """Creates a login form"""
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
 
 class SignupForm(ConnexionForm):
+    """Create a sign up form"""
     email = forms.EmailField(label="Email", widget=forms.EmailInput)
 
 def log_in(request):
+    """Log in function"""
 
     error = False
 
@@ -43,11 +45,13 @@ def log_in(request):
 
 
 def log_out(request):
-	logout(request)
-	return render(request, 'search/index.html')
+    """Log out function"""
+    logout(request)
+    return render(request, 'search/index.html')
 
 
 def sign_up(request):
+    """Sign up view"""
     if request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -58,7 +62,7 @@ def sign_up(request):
                 user = User.objects.create_user(username=username, email=email, password=password)
                 userid = authenticate(request, username=username, password=password)
                 login(request, userid)
-            except IntegrityError: 
+            except IntegrityError:
                 error = True #variable to print an error message if the username already exists
                 form = SignupForm()
     else:
@@ -67,12 +71,12 @@ def sign_up(request):
 
 
 def products(request):
+    """Function to display substitut products if the request is a get
+    Registrer a favorite product with a post request if the user is logged """
     if request.method == "GET":
         query = request.GET.get('query')
-        
         if not query:
             products = op_food.objects.all()[:24]
-
         else:
             query = query.capitalize()
             products = op_food.objects.filter(name__contains=query).order_by('nutriscore')[:6]
@@ -105,7 +109,7 @@ def products(request):
 
 
 def detail(request, product_id):
-
+    """Function that display the detail page of a product"""
     product = get_object_or_404(op_food, id=product_id)
     context = {
         'product': product,
@@ -113,7 +117,8 @@ def detail(request, product_id):
     return render(request, 'search/detail.html', context)
 
 
-def my_selection (request, user):
+def my_selection(request, user):
+    """Function to display the favorite products of a connected user"""
 
     if request.user.is_authenticated:
         userid = User.objects.get(id=user)
@@ -132,4 +137,5 @@ def my_selection (request, user):
     else:
 
         return redirect('search:log_in')
+
 

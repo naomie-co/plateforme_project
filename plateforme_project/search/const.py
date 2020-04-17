@@ -1,4 +1,5 @@
 #Used to offer categories to the user and to initiate requests
+
 CATEGORIES = ['Snacks', 'Boissons', 'Snacks sucrés', 'Plats préparés', \
 'Glaces', 'Sirops aromatisés', \
 'Compotes de pommes', 'Sandwichs', 'Légumineuses en conserve', \
