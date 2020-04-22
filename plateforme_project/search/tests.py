@@ -44,6 +44,9 @@ class ProductsPagesTestCase(TestCase):
         picture="", picture_100g="", categorie=self.cat)
         self.product1 = op_food.objects.get(name="taboulé")
         self.product2 = op_food.objects.get(name="taboulé2")
+        self.user = User.objects.create(username="test_1", is_active=1)
+        self.user.set_password("password")
+        self.user.save()
 
     def test_detail_page_returns_200(self):
         """test that detail page returns a status code 200"""
@@ -71,11 +74,12 @@ class ProductsPagesTestCase(TestCase):
         unconnected version"""
 
         page_without_log = self.client.get(reverse('search:products'))
-        self.client.login(username="test_1", password="password")
+        self.client.force_login(user=self.user)
         reponse = self.client.get(reverse('search:products'))
         #print(page_without_log)
         #print(reponse)
-        self.assertNotEqual(reponse, page_without_log) 
+        self.assertIn(b'<i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>', reponse.content) 
+        self.assertNotIn(b'<i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>', page_without_log.content) 
 
 class DataBaseTestCase(TestCase):
     """Test database models"""
