@@ -9,3 +9,4 @@ plateforme_project/manage.sublime-workspace
 plateforme_project/search/__pycache__/
 plateforme_project/search/migrations/__pycache__/
 .coverage
+geckodriver.log
