@@ -37,7 +37,7 @@
             </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'search:log_in' %}">
+            <a class="nav-link" href="{% url 'account:log_in' %}">
               <i class="fas fa-user fa-2x" style="color:white;"></i>
             </a>
           </li>
@@ -49,14 +49,14 @@
             </li>
           {% else %}
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'search:log_in' %}">
+              <a class="nav-link" href="{% url 'account:log_in' %}">
                 <i class="fas fa-carrot fa-2x" style="color:white;"></i>
               </a>
             </li>
           {% endif %}
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'search:log_out' %}">
+              <a class="nav-link" href="{% url 'account:log_out' %}">
                 <i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>
               </a>
             </li>

@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django import forms
 from search.models import op_food, substitute
 
 """Views of the pur beurre website"""
@@ -14,60 +13,6 @@ def index(request):
 
 
 
-class ConnexionForm(forms.Form):
-    """Creates a login form"""
-    username = forms.CharField(label="Nom d'utilisateur", max_length=30)
-    password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
-
-class SignupForm(ConnexionForm):
-    """Create a sign up form"""
-    email = forms.EmailField(label="Email", widget=forms.EmailInput)
-
-def log_in(request):
-    """Log in function"""
-
-    error = False
-
-    if request.method == "POST":
-        form = ConnexionForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)
-            else: # error message
-                error = True
-    else:
-        form = ConnexionForm()
-
-    return render(request, 'search/log_in.html', locals())
-
-
-def log_out(request):
-    """Log out function"""
-    logout(request)
-    return render(request, 'search/index.html')
-
-
-def sign_up(request):
-    """Sign up view"""
-    if request.method == "POST":
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            email = form.cleaned_data["email"]
-            try:
-                user = User.objects.create_user(username=username, email=email, password=password)
-                userid = authenticate(request, username=username, password=password)
-                login(request, userid)
-            except IntegrityError:
-                error = True #variable to print an error message if the username already exists
-                form = SignupForm()
-    else:
-        form = SignupForm()
-    return render(request, 'search/sign_up.html', locals())
 
 
 def products(request):
@@ -136,6 +81,6 @@ def my_selection(request, user):
         return render(request, 'search/my_selection.html', context)
     else:
 
-        return redirect('search:log_in')
+        return redirect('account:log_in')
 
 

@@ -37,7 +37,7 @@
             		{% endif %}
 
 			    {% else %}
-			    	<p><a href="{% url 'search:log_in' %}">Connectez-vous pour enregistrer ce produit</a></p>
+			    	<p><a href="{% url 'account:log_in' %}">Connectez-vous pour enregistrer ce produit</a></p>
           		{% endif %}
 		    </div>
 		  {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}

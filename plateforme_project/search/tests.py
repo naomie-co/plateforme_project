@@ -6,29 +6,7 @@ from search.models import categorie, op_food
 
 """Tests views and the database models"""
 
-class IndexPageTestCase(TestCase):
-    """test that index page returns a status code 200"""
-    def test_index_page(self): 
-        response = self.client.get(reverse('index'))
-        self.assertEqual(response.status_code, 200)
 
-class LogPagesTestCase(TestCase):
-
-    def test_log_in_page(self):
-        """test that login page returns a status code 200"""
-        response = self.client.get(reverse('search:log_in'))
-        self.assertEqual(response.status_code, 200)
-
-    def test_sign_up_page(self):
-        """test that sing_up page returns a status code 200"""
-        response = self.client.get(reverse('search:sign_up'))
-        self.assertEqual(response.status_code, 200)
-    
-    def test_log_out_page(self):
-        """Test that logout page return a status code 200"""
-        response = self.client.get(reverse('search:log_out'))
-        self.assertEqual(response.status_code, 200)
-    
 class ProductsPagesTestCase(TestCase):
     """Tests products page and selection page"""
     

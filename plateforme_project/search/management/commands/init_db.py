@@ -32,7 +32,6 @@ class Command(BaseCommand):
             cat.save()
         return cat
 
-
     def request_product(self, tag):
         """Get products from the API depending on the tag in parameter.
         Store the result in a list of list named data
@@ -54,7 +53,6 @@ class Command(BaseCommand):
                 pass
         return data
    
-    
     def search_product(self):
         """From the categories of the category table, launch a request to the
         OFF API with the request_product method. Retrieve the OFF data to 
@@ -73,8 +71,6 @@ class Command(BaseCommand):
         categorie.objects.all().delete()
         op_food.objects.all().delete()
         substitute.objects.all().delete()
-
-
 
     def handle(self, *args, **options):
         """Delete data then fill the database

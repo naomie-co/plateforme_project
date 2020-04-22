@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^search/', include('search.urls', namespace='search')),
     url(r'^manage/', admin.site.urls),
+    url(r'account/', include('account.urls', namespace="account")),
 ]
 
 if settings.DEBUG:
