@@ -29,7 +29,7 @@
 		        		<i class="far fa-square" style="color:white;"></i> 
 		        		<input type="hidden" name="user" value="{{ user.id }}" />
 		        		<input type="hidden" name="product" value="{{ product.id }}" />      		
-		        		<input type="submit" value="Sauvegarder"/>	
+		        		<input type="submit" name="save" value="Sauvegarder"/>	
                 	</form>
 
 			        {% if error %}
@@ -37,7 +37,7 @@
             		{% endif %}
 
 			    {% else %}
-			    	<p><a href="{% url 'account:log_in' %}">Connectez-vous pour enregistrer ce produit</a></p>
+			    	<p><a name="log_in" href="{% url 'account:log_in' %}">Connectez-vous pour enregistrer ce produit</a></p>
           		{% endif %}
 		    </div>
 		  {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}

@@ -2,8 +2,10 @@ from django.urls import reverse
 from django.test import TestCase
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from search.models import categorie, op_food
 from selenium import webdriver
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium.webdriver.support.wait import WebDriverWait
+from search.models import categorie, op_food
 
 """Tests views and the database models"""
 
@@ -99,29 +101,50 @@ class DataBaseTestCase(TestCase):
         self.assertEqual(new_categorie, old_categorie + 1)
 
 
-class SearchText(TestCase):
+class SearchText(StaticLiveServerTestCase):
+    """Functional tests"""
+
+
     def setUp(self):
+        """setup products in the models"""
+        test_categorie = categorie.objects.create(name="Taboulé")
+        self.cat = categorie.objects.get(name="Taboulé")
+        test_product1 = op_food.objects.create(name="Taboulé", nutriscore="d", \
+        ingredient="test", nutritional_values="test", url="www.test.fr", \
+        picture="", picture_100g="", categorie=self.cat)
+        test_product2 = op_food.objects.create(name="Taboulé2", \
+        nutriscore="c", ingredient="test2", nutritional_values="test2", \
+        url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
+        self.product1 = op_food.objects.get(name="Taboulé")
+        self.product2 = op_food.objects.get(name="Taboulé2")
         # create a new Firefox session
         self.driver = webdriver.Firefox(executable_path=r'C:\\Program Files\\geckodriver\\geckodriver.exe')
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
-        self.driver.get("http://www.google.com/")
+        self.driver.get('%s' % (self.live_server_url))
 
     def test_search_by_text(self):
+        """Test that if a the user is not logged, the result is display with a 
+        log_in button"""
+
+        timeout = 2
         # get the search textbox
-        self.search_field = self.driver.find_element_by_name("q")
+        self.search_field = WebDriverWait(self.driver, timeout).until(
+        lambda driver: self.driver.find_element_by_name("query"))
+
 
         # enter search keyword and submit
-        self.search_field.send_keys("Selenium WebDriver Interview questions")
+        self.search_field.send_keys("taboulé")
         self.search_field.submit()
 
         #get the list of elements which are displayed after the search
-        #currently on result page usingfind_elements_by_class_namemethod
+        #currently on result page usingfind_elements_by_name_namemethod
 
-        lists = self.driver.find_elements_by_class_name("r")
-        no=len(lists)
-        self.assertEqual(11, len(lists))
+        lists = WebDriverWait(self.driver, timeout).until(
+        lambda driver: self.driver.find_element_by_name("log_in"))
+        no = op_food.objects.count()
+        self.assertEqual(2, no)
 
     def tearDown(self):
         # close the browser window
