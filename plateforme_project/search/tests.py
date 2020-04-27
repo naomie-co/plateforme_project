@@ -117,6 +117,12 @@ class SearchText(StaticLiveServerTestCase):
         url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
         self.product1 = op_food.objects.get(name="Taboulé")
         self.product2 = op_food.objects.get(name="Taboulé2")
+
+        #Create a User
+        self.user = User.objects.create(username="test_1", is_active=1)
+        self.user.set_password("password")
+        self.user.save()
+        
         # create a new Firefox session
         self.driver = webdriver.Firefox(executable_path=r'C:\\Program Files\\geckodriver\\geckodriver.exe')
         self.driver.implicitly_wait(30)
@@ -124,7 +130,7 @@ class SearchText(StaticLiveServerTestCase):
         # navigate to the application home page
         self.driver.get('%s' % (self.live_server_url))
 
-    def test_search_by_text(self):
+    def test_search_user_not_log(self):
         """Test that if a the user is not logged, the result is display with a 
         log_in button"""
 
@@ -145,6 +151,39 @@ class SearchText(StaticLiveServerTestCase):
         lambda driver: self.driver.find_element_by_name("log_in"))
         no = op_food.objects.count()
         self.assertEqual(2, no)
+
+
+    def tearDown(self):
+        # close the browser window
+        self.driver.quit()
+
+    def test_search_user_log(self):
+
+        timeout = 2
+        # get the search textbox
+        self.driver.find_element_by_name("user_i").click()
+        self.driver.find_element_by_name("username").send_keys("test_1")
+        self.driver.find_element_by_name('password').send_keys("password")
+        self.driver.find_element_by_name("log_in").click()
+        # enter search keyword and submit
+
+        # get the search textbox
+        self.search_field = WebDriverWait(self.driver, timeout).until(
+        lambda driver: self.driver.find_element_by_name("query"))
+
+
+        # enter search keyword and submit
+        self.search_field.send_keys("taboulé")
+        self.search_field.submit()
+        #get the list of elements which are displayed after the search
+        #currently on result page usingfind_elements_by_name_namemethod
+
+        lists = WebDriverWait(self.driver, timeout).until(
+        lambda driver: self.driver.find_element_by_name("save"))
+        no = op_food.objects.count()
+        self.assertEqual(2, no)
+
+
 
     def tearDown(self):
         # close the browser window

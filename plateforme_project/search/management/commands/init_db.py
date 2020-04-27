@@ -52,6 +52,7 @@ class Command(BaseCommand):
             except KeyError:
                 pass
         return data
+
    
     def search_product(self):
         """From the categories of the category table, launch a request to the
