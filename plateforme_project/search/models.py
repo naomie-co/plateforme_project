@@ -1,3 +1,6 @@
+"""Models of the Pur Beurre website - Data from the OpenFoodFacts API
+Initialized by the init_db.py file
+"""
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,6 +11,7 @@ class categorie(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class op_food(models.Model):
     """Stores openfoodfact API products"""

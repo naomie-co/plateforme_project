@@ -1,18 +1,14 @@
+"""Views of the pur beurre website: views without log"""
+
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from search.models import op_food, substitute
-
-"""Views of the pur beurre website"""
 
 
 def index(request):
     """Function that display the home page"""
     return render(request, 'search/index.html')
-
-
-
 
 
 def products(request):
@@ -21,16 +17,14 @@ def products(request):
     if request.method == "GET":
         query = request.GET.get('query')
         if not query:
-            products = op_food.objects.all()[:24]
+            products = op_food.objects.order_by('nutriscore')[:30]
+            title = "Voici une sélection de produits :"
         else:
             query = query.capitalize()
             products = op_food.objects.filter(name__contains=query).order_by('nutriscore')[:6]
+            title = "Résultats de la recherche : %s"%query
             if len(products) == 0:
-                message = "Aucun produit ne correspond aux critères de votre recherche"
-            else:
-                products = [product for product in products]
-                print(products)
-        title = "Résultats de la recherche : %s"%query
+                title = "Aucun produit ne correspond aux critères de votre recherche"
         context = {
             'products': products,
             'title': title
@@ -43,11 +37,7 @@ def products(request):
             user = request.POST.get('user')
             prod = op_food.objects.get(id=product)
             user_id = User.objects.get(id=user)
-            #print(user, prod.id)
-            #print(type(prod))
-            print(product, user)
-            selection = substitute.objects.get_or_create(id_substitute=prod, user=user_id)
-            message = "Le produit est sauvegardé!"
+            substitute.objects.get_or_create(id_substitute=prod, user=user_id)
         except IntegrityError:
             error = True
         return redirect('search:my_selection', user=user)
@@ -77,10 +67,6 @@ def my_selection(request, user):
         context = {
             'products': products,
         }
-
         return render(request, 'search/my_selection.html', context)
     else:
-
         return redirect('account:log_in')
-
-

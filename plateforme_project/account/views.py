@@ -1,10 +1,12 @@
+"""Account views of the pur beurre website"""
+
 from django.shortcuts import render
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 
-# Create your views here.
+
 class ConnexionForm(forms.Form):
     """Creates a login form"""
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
@@ -52,7 +54,7 @@ def sign_up(request):
             password = form.cleaned_data["password"]
             email = form.cleaned_data["email"]
             try:
-                user = User.objects.create_user(username=username, email=email, password=password)
+                User.objects.create_user(username=username, email=email, password=password)
                 userid = authenticate(request, username=username, password=password)
                 login(request, userid)
             except IntegrityError:

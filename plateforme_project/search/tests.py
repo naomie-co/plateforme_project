@@ -1,28 +1,36 @@
+
+"""Tests views and the database models"""
+
 from django.urls import reverse
-from django.test import TestCase
-from django.contrib.auth import authenticate, login
+from django.test import TestCase 
 from django.contrib.auth.models import User
-from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from search.models import categorie, op_food
 
-"""Tests views and the database models"""
+
+class IndexPageTestCase(TestCase):
+    """test that index page returns a status code 200"""
+    def test_index_page(self):
+        """index_page status code test"""
+        response = self.client.get(reverse('index'))
+        self.assertEqual(response.status_code, 200)
 
 
 class ProductsPagesTestCase(TestCase):
     """Tests products page and selection page"""
-    
+
     def setUp(self):
         """Setup products in the models"""
         test_categorie = categorie.objects.create(name="taboulé")
         self.cat = categorie.objects.get(name="taboulé")
-        test_product1 = op_food.objects.create(name="taboulé", nutriscore="d", \
-        ingredient="test", nutritional_values="test", url="www.test.fr", \
-        picture="", picture_100g="", categorie=self.cat)
-        test_product2 = op_food.objects.create(name="taboulé2", nutriscore="c", \
-        ingredient="test2", nutritional_values="test2", url="www.test2.fr", \
-        picture="", picture_100g="", categorie=self.cat)
+        test_product1 = op_food.objects.create(name="taboulé", \
+        nutriscore="d", ingredient="test", nutritional_values="test", \
+        url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
+        test_product2 = op_food.objects.create(name="taboulé2", \
+        nutriscore="c", ingredient="test2", nutritional_values="test2", \
+        url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
         self.product1 = op_food.objects.get(name="taboulé")
         self.product2 = op_food.objects.get(name="taboulé2")
         self.user = User.objects.create(username="test_1", is_active=1)
@@ -59,8 +67,10 @@ class ProductsPagesTestCase(TestCase):
         reponse = self.client.get(reverse('search:products'))
         #print(page_without_log)
         #print(reponse)
-        self.assertIn(b'<i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>', reponse.content) 
-        self.assertNotIn(b'<i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>', page_without_log.content) 
+        self.assertIn(b'<i class="fas fa-sign-out-alt fa-2x" \
+        style="color:white;"></i>', reponse.content)
+        self.assertNotIn(b'<i class="fas fa-sign-out-alt fa-2x" \
+        style="color:white;"></i>', page_without_log.content)
 
 class DataBaseTestCase(TestCase):
     """Test database models"""
@@ -69,9 +79,9 @@ class DataBaseTestCase(TestCase):
         """setup products in the models"""
         test_categorie = categorie.objects.create(name="taboulé")
         self.cat = categorie.objects.get(name="taboulé")
-        test_product1 = op_food.objects.create(name="taboulé", nutriscore="d", \
-        ingredient="test", nutritional_values="test", url="www.test.fr", \
-        picture="", picture_100g="", categorie=self.cat)
+        test_product1 = op_food.objects.create(name="taboulé", \
+        nutriscore="d", ingredient="test", nutritional_values="test", \
+        url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
         test_product2 = op_food.objects.create(name="taboulé2", \
         nutriscore="c", ingredient="test2", nutritional_values="test2", \
         url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
@@ -109,12 +119,13 @@ class SearchText(StaticLiveServerTestCase):
         """setup products in the models"""
         test_categorie = categorie.objects.create(name="Taboulé")
         self.cat = categorie.objects.get(name="Taboulé")
-        test_product1 = op_food.objects.create(name="Taboulé", nutriscore="d", \
-        ingredient="test", nutritional_values="test", url="www.test.fr", \
-        picture="", picture_100g="", categorie=self.cat)
-        test_product2 = op_food.objects.create(name="Taboulé2", \
+        test_product1 = op_food.objects.create(name="taboulé", \
+        nutriscore="d", ingredient="test", nutritional_values="test", \
+        url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
+        test_product2 = op_food.objects.create(name="taboulé2", \
         nutriscore="c", ingredient="test2", nutritional_values="test2", \
-        url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
+        url="www.test2.fr", picture="", picture_100g="", \
+        categorie=self.cat)
         self.product1 = op_food.objects.get(name="Taboulé")
         self.product2 = op_food.objects.get(name="Taboulé2")
 
@@ -122,7 +133,7 @@ class SearchText(StaticLiveServerTestCase):
         self.user = User.objects.create(username="test_1", is_active=1)
         self.user.set_password("password")
         self.user.save()
-        
+
         # create a new Firefox session
         self.driver = webdriver.Firefox(executable_path=r'C:\\Program Files\\geckodriver\\geckodriver.exe')
         self.driver.implicitly_wait(30)
@@ -131,26 +142,26 @@ class SearchText(StaticLiveServerTestCase):
         self.driver.get('%s' % (self.live_server_url))
 
     def test_search_user_not_log(self):
-        """Test that if a the user is not logged, the result is display with a 
+        """Test that if a the user is not logged, the result is display with a
         log_in button"""
 
         timeout = 2
         # get the search textbox
         self.search_field = WebDriverWait(self.driver, timeout).until(
-        lambda driver: self.driver.find_element_by_name("query"))
+            lambda driver: self.driver.find_element_by_name("query"))
 
 
         # enter search keyword and submit
         self.search_field.send_keys("taboulé")
         self.search_field.submit()
 
-        #get the list of elements which are displayed after the search
-        #currently on result page usingfind_elements_by_name_namemethod
+        #get the list of elements which are displayed after the search on
+        #result page elements_by_name
 
         lists = WebDriverWait(self.driver, timeout).until(
-        lambda driver: self.driver.find_element_by_name("log_in"))
-        no = op_food.objects.count()
-        self.assertEqual(2, no)
+            lambda driver: self.driver.find_element_by_name("log_in"))
+        result = op_food.objects.count()
+        self.assertEqual(2, result)
 
 
     def tearDown(self):
@@ -158,18 +169,19 @@ class SearchText(StaticLiveServerTestCase):
         self.driver.quit()
 
     def test_search_user_log(self):
+        """Test if a user is logged in, the search page displays a backup
+        button"""
 
         timeout = 2
-        # get the search textbox
+        # get the search textbox required to login
         self.driver.find_element_by_name("user_i").click()
         self.driver.find_element_by_name("username").send_keys("test_1")
         self.driver.find_element_by_name('password').send_keys("password")
         self.driver.find_element_by_name("log_in").click()
-        # enter search keyword and submit
 
         # get the search textbox
         self.search_field = WebDriverWait(self.driver, timeout).until(
-        lambda driver: self.driver.find_element_by_name("query"))
+            lambda driver: self.driver.find_element_by_name("query"))
 
 
         # enter search keyword and submit
@@ -179,9 +191,9 @@ class SearchText(StaticLiveServerTestCase):
         #currently on result page usingfind_elements_by_name_namemethod
 
         lists = WebDriverWait(self.driver, timeout).until(
-        lambda driver: self.driver.find_element_by_name("save"))
-        no = op_food.objects.count()
-        self.assertEqual(2, no)
+            lambda driver: self.driver.find_element_by_name("save"))
+        result = op_food.objects.count()
+        self.assertEqual(2, result)
 
 
 

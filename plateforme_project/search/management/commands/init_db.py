@@ -1,6 +1,7 @@
+"""Script to initialize the platform database from the OpenFoodFacts API"""
+
 import requests
-from django.conf import settings
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from search.models import categorie, op_food, substitute
 from search.const import CATEGORIES
 
@@ -53,10 +54,9 @@ class Command(BaseCommand):
                 pass
         return data
 
-   
     def search_product(self):
         """From the categories of the category table, launch a request to the
-        OFF API with the request_product method. Retrieve the OFF data to 
+        OFF API with the request_product method. Retrieve the OFF data to
         insert into the op_food table"""
         categories = categorie()
         categories = categorie.objects.all()
@@ -79,4 +79,3 @@ class Command(BaseCommand):
         self.delete_data()
         self.categorie_db()
         self.search_product()
-
