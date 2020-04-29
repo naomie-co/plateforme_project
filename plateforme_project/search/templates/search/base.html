@@ -12,6 +12,8 @@
 
     <link href="{% static 'search/css/style.css' %}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/434d30335f.js" crossorigin="anonymous"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'search/img/icone/favicon.png' %}" type="image/png" sizes="16x16">
 
     <title>Pur beurre</title>
   </head>
@@ -38,26 +40,26 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" name="user_i" href="{% url 'account:log_in' %}">
-              <i class="fas fa-user fa-2x" style="color:white;"></i>
+              <i class="fas fa-user fa-2x"></i>
             </a>
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'search:my_selection' user=user.id %}">
-                <i class="fas fa-carrot fa-2x" style="color:white;"></i>
+                <i class="fas fa-carrot fa-2x"></i>
               </a>
             </li>
           {% else %}
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'account:log_in' %}">
-                <i class="fas fa-carrot fa-2x" style="color:white;"></i>
+                <i class="fas fa-carrot fa-2x"></i>
               </a>
             </li>
           {% endif %}
           {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'account:log_out' %}">
-                <i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>
+                <i class="fas fa-sign-out-alt fa-2x"></i>
               </a>
             </li>
           {% endif %}
@@ -68,16 +70,16 @@
 
 
    
-    <section style="background-color: #345A61;">
+    <section class="main">
       {% block content %}{% endblock %}
     </section>
 
 
-    <footer>
+    <footer class="footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Mentions légales &copy; <a href="http://www.hello-birds.com" target="_blank">Contact</a></p>
+                    <a class="nounderline" href="{% url 'search:legal' %}">Mentions légales</a>
                 </div>
             </div>
         </div>

@@ -17,22 +17,29 @@ class IndexPageTestCase(TestCase):
         response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
 
+class LegalTestCase(TestCase):
+    """test that legal page returns a status code 200"""
+    def test_legal_page(self):
+        """Legal page status code test"""
+        response = self.client.get(reverse('search:legal'))
+        self.assertEqual(response.status_code, 200)
+
 
 class ProductsPagesTestCase(TestCase):
     """Tests products page and selection page"""
 
     def setUp(self):
         """Setup products in the models"""
-        test_categorie = categorie.objects.create(name="taboulé")
-        self.cat = categorie.objects.get(name="taboulé")
-        test_product1 = op_food.objects.create(name="taboulé", \
+        test_categorie = categorie.objects.create(name="Taboulé")
+        self.cat = categorie.objects.get(name="Taboulé")
+        test_product1 = op_food.objects.create(name="Taboulé", \
         nutriscore="d", ingredient="test", nutritional_values="test", \
         url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
-        test_product2 = op_food.objects.create(name="taboulé2", \
+        test_product2 = op_food.objects.create(name="Taboulé2", \
         nutriscore="c", ingredient="test2", nutritional_values="test2", \
         url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
-        self.product1 = op_food.objects.get(name="taboulé")
-        self.product2 = op_food.objects.get(name="taboulé2")
+        self.product1 = op_food.objects.get(name="Taboulé")
+        self.product2 = op_food.objects.get(name="Taboulé2")
         self.user = User.objects.create(username="test_1", is_active=1)
         self.user.set_password("password")
         self.user.save()
@@ -65,28 +72,24 @@ class ProductsPagesTestCase(TestCase):
         page_without_log = self.client.get(reverse('search:products'))
         self.client.force_login(user=self.user)
         reponse = self.client.get(reverse('search:products'))
-        #print(page_without_log)
-        #print(reponse)
-        self.assertIn(b'<i class="fas fa-sign-out-alt fa-2x" \
-        style="color:white;"></i>', reponse.content)
-        self.assertNotIn(b'<i class="fas fa-sign-out-alt fa-2x" \
-        style="color:white;"></i>', page_without_log.content)
+        self.assertIn(b'<i class="fas fa-sign-out-alt fa-2x"', reponse.content)
+        self.assertNotIn(b'<i class="fas fa-sign-out-alt fa-2x"', page_without_log.content)
 
 class DataBaseTestCase(TestCase):
     """Test database models"""
 
     def setUp(self):
         """setup products in the models"""
-        test_categorie = categorie.objects.create(name="taboulé")
-        self.cat = categorie.objects.get(name="taboulé")
-        test_product1 = op_food.objects.create(name="taboulé", \
+        test_categorie = categorie.objects.create(name="Taboulé")
+        self.cat = categorie.objects.get(name="Taboulé")
+        test_product1 = op_food.objects.create(name="Taboulé", \
         nutriscore="d", ingredient="test", nutritional_values="test", \
         url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
-        test_product2 = op_food.objects.create(name="taboulé2", \
+        test_product2 = op_food.objects.create(name="Taboulé2", \
         nutriscore="c", ingredient="test2", nutritional_values="test2", \
         url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
-        self.product1 = op_food.objects.get(name="taboulé")
-        self.product2 = op_food.objects.get(name="taboulé2")
+        self.product1 = op_food.objects.get(name="Taboulé")
+        self.product2 = op_food.objects.get(name="Taboulé2")
 
     def test_user_create(self):
         """Test that a new user is created"""
@@ -119,13 +122,12 @@ class SearchText(StaticLiveServerTestCase):
         """setup products in the models"""
         test_categorie = categorie.objects.create(name="Taboulé")
         self.cat = categorie.objects.get(name="Taboulé")
-        test_product1 = op_food.objects.create(name="taboulé", \
+        test_product1 = op_food.objects.create(name="Taboulé", \
         nutriscore="d", ingredient="test", nutritional_values="test", \
         url="www.test.fr", picture="", picture_100g="", categorie=self.cat)
-        test_product2 = op_food.objects.create(name="taboulé2", \
+        test_product2 = op_food.objects.create(name="Taboulé2", \
         nutriscore="c", ingredient="test2", nutritional_values="test2", \
-        url="www.test2.fr", picture="", picture_100g="", \
-        categorie=self.cat)
+        url="www.test2.fr", picture="", picture_100g="", categorie=self.cat)
         self.product1 = op_food.objects.get(name="Taboulé")
         self.product2 = op_food.objects.get(name="Taboulé2")
 

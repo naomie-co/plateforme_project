@@ -7,12 +7,6 @@
   background-attachment: scroll;
   background-size: cover;
 }
-
-#base {
-
-	background-color: #345A61;
-}
-
 .navbar {
 	background-color: #C45525;
 }
@@ -40,4 +34,30 @@ footer {
   top: 8px;
   right: 75px;
 
+}
+
+.nounderline {
+
+  color: white;
+
+}
+
+
+body, html
+{
+    height : 100%;
+}
+
+.main {
+  background-color: #345A61;
+  min-height: 100%;
+  width: 100%;
+}
+
+i {
+  color: white;
+}
+
+.main_icone {
+  color: black;
 }

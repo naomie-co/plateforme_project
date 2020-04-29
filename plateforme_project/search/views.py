@@ -70,3 +70,7 @@ def my_selection(request, user):
         return render(request, 'search/my_selection.html', context)
     else:
         return redirect('account:log_in')
+
+def legal(request):
+    """Function to display the legal mentions page"""
+    return render(request, 'search/legal.html')
