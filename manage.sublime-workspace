@@ -1,0 +1,473 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pat",
+				"path"
+			],
+			[
+				"col",
+				"col-6"
+			],
+			[
+				"di",
+				"display\tproperty"
+			],
+			[
+				"set",
+				"setAttribute"
+			],
+			[
+				"se",
+				"search2"
+			],
+			[
+				"data",
+				"data"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"re",
+				"render_template"
+			],
+			[
+				"sauve",
+				"sauvegardé"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"product",
+				"product_keys"
+			],
+			[
+				"nutri",
+				"nutri_prod"
+			],
+			[
+				"cat",
+				"categorie_num"
+			],
+			[
+				"nb",
+				"nb_categorie"
+			],
+			[
+				"cate",
+				"categorie"
+			],
+			[
+				"feth",
+				"fetchone"
+			],
+			[
+				"fet",
+				"fetchone"
+			],
+			[
+				"de",
+				"describeTable"
+			],
+			[
+				"find",
+				"findSavedProduct"
+			],
+			[
+				"prod",
+				"produit_original"
+			],
+			[
+				"sub",
+				"substitute_key"
+			],
+			[
+				"o_n",
+				"o_nutriscore"
+			],
+			[
+				"subs",
+				"subst_product"
+			],
+			[
+				"su",
+				"substitute"
+			],
+			[
+				"Key",
+				"KeyError"
+			],
+			[
+				"databse",
+				"database"
+			],
+			[
+				"pas",
+				"password"
+			],
+			[
+				"laby",
+				"laby_2"
+			],
+			[
+				"game",
+				"game_over"
+			],
+			[
+				"E",
+				"E"
+			],
+			[
+				"f",
+				"from"
+			],
+			[
+				"moyen",
+				"moyenneExamen"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/README.md",
+			"settings":
+			{
+				"buffer_size": 18,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"p",
+				"Build With: Python"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/search/static/search/css/creative.css",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/search/static/search/scss/_navbar.scss",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/search/urls.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/plateforme_project/urls.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/cahier des charges/bg-masthead.jpg",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/manage.py",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa900.12135/icons.css",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/search/static/search/img/portfolio/thumbnails/4.jpg",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/search/templates/search/index.html",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa7544.14027/README.md",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/parser/parser_class.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/views.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/plateforme_project/info.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/plateforme_project/plateforme_project/settings.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Découvrez_le_framework_Django/disquaire/disquaire_project/manage.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Découvrez_le_framework_Django/disquaire/disquaire_project/disquaire_project/wsgi.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Découvrez_le_framework_Django/disquaire/disquaire_project/disquaire_project/urls.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Découvrez_le_framework_Django/disquaire/disquaire_project/disquaire_project/settings.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Découvrez_le_framework_Django/disquaire/disquaire_project/disquaire_project/asgi.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Découvrez_le_framework_Django/disquaire/disquaire_project/disquaire_project/__init__.py",
+		"/C/Users/firef_000/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/README.md",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/parser/stop_words.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/static/style.css",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/templates/index.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/static/script.js",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/run.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/tests/test_views.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/api/api_classes.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/config.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/templates/base.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/templates/simple_ajax.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/templates/result.html",
+		"/C/Users/firef_000/Documents/Python/tuto_AJAX/FlaskApp/script.js",
+		"/C/Users/firef_000/Documents/Python/tuto_AJAX/FlaskApp/app.py",
+		"/C/Users/firef_000/Documents/Python/tuto_AJAX/FlaskApp/signUp.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/__init__.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/classes.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/constantes.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/parser/CONST_STOP_WORDS.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/Parser/CONST_STOP_WORDS.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/Parser/Parser_class.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/Parser/STOP_WORDS.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/classes.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/templates/index.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/models.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/run.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/config.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/__init__.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/utils.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/templates/card.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/templates/base.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/templates/result.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/views.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/README.md",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet7/P7app/models.py",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa5088.31617/base_de_données.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa6744.33438/base_avec_données.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa9084.32226/base_de_données.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa4048.29807/base_avec_données.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_6/base_avec_données.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_6/base_de_données.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa3828.32023/script_creation_base_de_donnees.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa6656.33702/script_insert_donnees.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/config.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/fbapp/run.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/views.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/template/index.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/template/result.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/concevez_un_site_avec_flask-P1C1/concevez_un_site_avec_flask-P1C1/result.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/concevez_un_site_avec_flask/concevez_un_site_avec_flask-P1C1/concevez_un_site_avec_flask-P1C1/index.html",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa5272.1027/script_insert_donnees.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa9732.49750/script_creation_base_de_donnees.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_6/script_creation_base_de_donnees.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_6/script_insert_donnees.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa6756.14522/script_base_de_données.sql",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa6928.12649/base_avec_données.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_6/script_tables.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_6/modèle_physique_de_données.png",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_6/insert_data.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/DB_info.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/database.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/main.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/Data.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Apprenez_a_programmer_en_python/zzCasino.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/main.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/categories.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/categories.txt",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/categories.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/classes.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Apprenez_a_programmer_en_python/pendu3.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/MySQL/elevage_sauvegarde.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/DB_informations.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/API_Rest/curl_space",
+		"/C/Users/firef_000/Documents/Openclassrooms/MySQL/remplissageAnimal.sql",
+		"/C/Users/firef_000/Documents/Openclassrooms/MySQL/animal.csv",
+		"/C/Users/firef_000/Documents/Openclassrooms/API_Rest/texttospeech.txt",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/classes.py.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet5/test.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/API_Rest/test.txt",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/const.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/test_MacGyver.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/test_classes.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/maze_class.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/class.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/maze_class_pygame.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/projet3pygame.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/maze_class_pygame_3.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/maze_class_pygame_2.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/Projet_3/constantes.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/naomie.md",
+		"/C/Users/firef_000/Documents/Openclassrooms/Exercices/test2.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/maze_class.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Projets/maze.txt",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa30392.4124/labyrinthe.py",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa30392.5874/carte.py",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa30392.7614/roboc.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/HTML5 CSS3/partie CSS/champagne/stylesheet.css",
+		"/C/Users/firef_000/Documents/Openclassrooms/HTML5 CSS3/partie CSS/pageAvecCss.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/HTML5 CSS3/partie CSS/style.css",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa31952.41336/roboc.py",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa31952.40480/labyrinthe.py",
+		"/C/Users/firef_000/AppData/Local/Temp/Rar$DIa31952.40688/carte.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Exercices/2_Naomie_exercice_1.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/Exercices/Naomie_exercice_1.py",
+		"/C/Users/firef_000/Documents/Openclassrooms/HTML5 CSS3/Exercice 1/mon_CV.html",
+		"/C/Users/firef_000/Documents/Openclassrooms/HTML5 CSS3/test1.html",
+		"/C/Users/firef_000/Documents/CNAM/JAVA/CUBE.java"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/firef_000/Documents/Openclassrooms/Projets/OC_projet_8/oc_P8_Plateforme/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								18
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "manage.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 233.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
