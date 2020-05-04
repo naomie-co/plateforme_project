@@ -18,15 +18,15 @@
 		{% for product in products %}
 		    <div class="col-lg-4 text-center my-4">
 		        <a href="{% url 'search:detail' product_id=product.id %}">
-		          <img class="img-responsive" width="300" height="300" src="{{ product.picture }}" alt="{{ product.name }}">
-		          <img class="img-responsive thumbnails" width="70" height="80" src="{% static 'search/img/thumbnails/' %}{{ product.nutriscore}}.png"  alt="{{ product.nutriscore }}">
+		          <img class="img-responsive img_product" width="300" height="300" src="{{ product.picture }}" alt="{{ product.name }}">
+		          <img class="img-responsive thumbnails" width="50" height="60" src="{% static 'search/img/thumbnails/' %}{{ product.nutriscore}}.png"  alt="{{ product.nutriscore }}">
 		        </a>
 		        <h3><a href="{% url 'search:detail' product_id=product.id %}">{{ product.name }}</a></h3>
 		        
 			    {% if user.is_authenticated %}
 		        	<form method="post" action="{% url 'search:products' %}">
 		        		{% csrf_token %}
-		        		<i class="far fa-square" style="color:white;"></i> 
+		        		<i class="far fa-square"></i> 
 		        		<input type="hidden" name="user" value="{{ user.id }}" />
 		        		<input type="hidden" name="product" value="{{ product.id }}" />      		
 		        		<input type="submit" name="save" value="Sauvegarder"/>	

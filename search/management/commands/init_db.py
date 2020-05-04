@@ -51,7 +51,7 @@ class Command(BaseCommand):
                 if i > 40:
                     break
             except KeyError:
-                pass
+                print("Erreur dans la réception des données : ", val)
         return data
 
     def search_product(self):

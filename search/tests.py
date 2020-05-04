@@ -72,7 +72,8 @@ class ProductsPagesTestCase(TestCase):
         page_without_log = self.client.get(reverse('search:products'))
         self.client.force_login(user=self.user)
         reponse = self.client.get(reverse('search:products'))
-        self.assertIn(b'<i class="fas fa-sign-out-alt fa-2x"', reponse.content)
+        self.assertIn(b'<i class="fas fa-sign-out-alt fa-2x"', 
+            reponse.content)
         self.assertNotIn(b'<i class="fas fa-sign-out-alt fa-2x"', page_without_log.content)
 
 class DataBaseTestCase(TestCase):
@@ -137,7 +138,8 @@ class SearchText(StaticLiveServerTestCase):
         self.user.save()
 
         # create a new Firefox session
-        self.driver = webdriver.Firefox(executable_path=r'C:\\Program Files\\geckodriver\\geckodriver.exe')
+        self.driver = webdriver.Firefox(
+        executable_path=r'C:\\Program Files\\geckodriver\\geckodriver.exe')
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         # navigate to the application home page
