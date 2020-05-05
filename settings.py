@@ -30,7 +30,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['plateforme_pur_beurre_oc.herokuapp.com']
+ALLOWED_HOSTS = ['plateforme-pur-beurre-oc.herokuapp.com']
 
 #ALLOWED_HOSTS = []
 
