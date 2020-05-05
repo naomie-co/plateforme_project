@@ -32,6 +32,7 @@ else:
 
 ALLOWED_HOSTS = ['plateforme_pur_beurre_oc.herokuapp.com']
 
+#ALLOWED_HOSTS = []
 
 
 # Application definition

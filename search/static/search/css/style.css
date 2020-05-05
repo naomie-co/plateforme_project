@@ -32,12 +32,10 @@ footer {
 
   position: absolute;
   top: 5%;
-  right: 30%;
+  right: 25%;
+  align-items: end
 }
 
-.img_product {
- 
-}
 
 .nounderline {
 
