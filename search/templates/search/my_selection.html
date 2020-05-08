@@ -16,7 +16,7 @@
 		{% if products %}
 			<div class="row">
 				{% for product in products %}
-				    <div class="col-lg-4 text-center">
+				    <div class="col-lg-4 text-center my-4">
 				        <a href="{% url 'search:detail' product_id=product.id %}">
 				 			<img class="img-responsive" width="200" height="300" src="{{ product.picture }}" alt="{{ product.name }}">
 				        </a>
